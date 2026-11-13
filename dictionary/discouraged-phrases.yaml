@@ -1,0 +1,19 @@
+version: '0.1'
+entries:
+  - phrase: 'It is important to note that'
+    action: remove
+  - phrase: 'Please be aware that'
+    action: remove
+  - phrase: 'In order to'
+    action: replace
+    replacement: 'To'
+  - phrase: 'At this point in time'
+    action: replace
+    replacement: 'Now'
+  - phrase: 'It would be beneficial to'
+    action: rewrite_with_direct_verb
+  - phrase: 'As previously mentioned'
+    action: remove_or_reference
+notes:
+  - 'Do not rewrite quoted text, source code, logs, or API identifiers.'
+  - 'Do not remove modal verbs when they communicate genuine uncertainty.'
