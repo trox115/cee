@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ceebench/metrics/1",
+  "title": "Structured metrics for one case",
+  "type": "object",
+  "required": [
+    "schema",
+    "publishable",
+    "generated_at",
+    "runner",
+    "word_count",
+    "case_id",
+    "inputs",
+    "variants",
+    "items",
+    "totals",
+    "reproduction"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ceebench/metrics/1"
+    },
+    "publishable": {
+      "type": "boolean"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "runner": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "python"
+      ]
+    },
+    "spec": {
+      "type": "object"
+    },
+    "word_count": {
+      "type": "object",
+      "required": [
+        "ruleset",
+        "options"
+      ]
+    },
+    "dataset": {
+      "type": "object"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "variant_id"
+        ]
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "item_id",
+          "counts"
+        ]
+      }
+    },
+    "totals": {
+      "type": "object"
+    },
+    "reproduction": {
+      "type": "object",
+      "required": [
+        "checked",
+        "matched",
+        "mismatches"
+      ]
+    }
+  }
+}

@@ -1,0 +1,562 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ceebench/evaluation/1",
+  "title": "Structured evaluation of candidate rewrites",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "publishable",
+    "binding",
+    "evaluator",
+    "items"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ceebench/evaluation/1"
+    },
+    "publishable": {
+      "type": "boolean"
+    },
+    "binding": {
+      "$ref": "#/$defs/binding"
+    },
+    "evaluator": {
+      "type": "object",
+      "required": [
+        "model_id"
+      ],
+      "properties": {
+        "model_id": {
+          "type": "string"
+        },
+        "client": {
+          "type": "string"
+        },
+        "self_report": {}
+      }
+    },
+    "candidate_variant": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id",
+        "dataset_manifest_sha256",
+        "case_id",
+        "contexts",
+        "spec",
+        "runner_fingerprint"
+      ],
+      "properties": {
+        "dataset_id": {
+          "type": "string"
+        },
+        "dataset_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "case_id": {
+          "type": "string"
+        },
+        "contexts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "spec": {
+          "type": "object",
+          "required": [
+            "version",
+            "commit"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "version": {
+              "type": "string"
+            },
+            "commit": {
+              "type": "string"
+            }
+          }
+        },
+        "runner_fingerprint": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "prompt_builder_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "instructions_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item_id",
+        "claims",
+        "dimensions",
+        "rule_results",
+        "violations",
+        "corrected_errors",
+        "unverifiable_claims"
+      ],
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text",
+              "technical_correctness",
+              "evidence_sufficiency",
+              "origin"
+            ],
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "technical_correctness": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unverifiable",
+                  "not_applicable"
+                ]
+              },
+              "evidence_sufficiency": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_applicable"
+                ]
+              },
+              "origin": {
+                "enum": [
+                  "introduced",
+                  "preserved",
+                  "not_a_claim"
+                ]
+              },
+              "evidence": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "dimensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "technical_accuracy",
+            "evidence_support",
+            "trigger_preservation",
+            "unsupported_claims_and_commitments",
+            "classification_and_severity",
+            "actionability",
+            "clarity_and_efficiency"
+          ],
+          "properties": {
+            "technical_accuracy": {
+              "type": "object",
+              "required": [
+                "status",
+                "score"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "unverifiable",
+                    "not_applicable"
+                  ]
+                },
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            },
+            "evidence_support": {
+              "type": "object",
+              "required": [
+                "status",
+                "score"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "unverifiable",
+                    "not_applicable"
+                  ]
+                },
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            },
+            "trigger_preservation": {
+              "type": "object",
+              "required": [
+                "status"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "unverifiable",
+                    "not_applicable"
+                  ]
+                },
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            },
+            "unsupported_claims_and_commitments": {
+              "type": "object",
+              "required": [
+                "status"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "unverifiable",
+                    "not_applicable"
+                  ]
+                },
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            },
+            "classification_and_severity": {
+              "type": "object",
+              "required": [
+                "status"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "unverifiable",
+                    "not_applicable"
+                  ]
+                },
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            },
+            "actionability": {
+              "type": "object",
+              "required": [
+                "status",
+                "score"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "unverifiable",
+                    "not_applicable"
+                  ]
+                },
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            },
+            "clarity_and_efficiency": {
+              "type": "object",
+              "required": [
+                "status",
+                "score"
+              ],
+              "properties": {
+                "status": {
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "unverifiable",
+                    "not_applicable"
+                  ]
+                },
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            },
+            "relevance": {
+              "type": "object",
+              "required": [
+                "score"
+              ],
+              "properties": {
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            },
+            "density": {
+              "type": "object",
+              "required": [
+                "score"
+              ],
+              "properties": {
+                "score": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "rule_results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "rule_id",
+              "level",
+              "result"
+            ],
+            "properties": {
+              "rule_id": {
+                "type": "string",
+                "pattern": "^[A-Z]+-\\d{3}$"
+              },
+              "level": {
+                "enum": [
+                  "MUST",
+                  "MUST NOT",
+                  "SHOULD",
+                  "MAY"
+                ]
+              },
+              "result": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unverifiable",
+                  "not_applicable"
+                ]
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "violations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "rule_id",
+              "level",
+              "text",
+              "evidence",
+              "reasoning",
+              "confidence",
+              "comparative_status"
+            ],
+            "properties": {
+              "rule_id": {
+                "type": "string",
+                "pattern": "^[A-Z]+-\\d{3}$"
+              },
+              "level": {
+                "enum": [
+                  "MUST",
+                  "MUST NOT",
+                  "SHOULD",
+                  "MAY"
+                ]
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reasoning": {
+                "type": "string",
+                "minLength": 1
+              },
+              "confidence": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              },
+              "comparative_status": {
+                "enum": [
+                  "introduced",
+                  "preserved"
+                ]
+              }
+            }
+          }
+        },
+        "corrected_errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "description",
+              "original_text"
+            ],
+            "properties": {
+              "rule_id": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "original_text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "unverifiable_claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "information_lost": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "information_added": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unanswered_or_open_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "consistency_check": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ceebench/sample/1",
+  "title": "Evaluator-only sample definition",
+  "type": "object",
+  "required": [
+    "schema",
+    "case_id",
+    "status",
+    "samples"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "ceebench/sample/1"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "status": {
+      "enum": [
+        "reported_judgment",
+        "verified"
+      ]
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "samples": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "sample_id",
+          "items"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "sample_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "item_id",
+                "group"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "item_id": {
+                  "type": "string"
+                },
+                "group": {
+                  "enum": [
+                    "finding",
+                    "reviewer_reply",
+                    "author_reply",
+                    "non_finding"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "excluded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "item_id",
+          "reason"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "item_id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
