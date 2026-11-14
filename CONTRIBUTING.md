@@ -1,6 +1,6 @@
 # Contributing to CEE
 
-CEE v0.1 is experimental. Small, evidence-based proposals are preferred over broad rewrites.
+CEE v0.2 is experimental. Small, evidence-based proposals are preferred over broad rewrites.
 
 1. Open an issue describing the communication failure and a before/after example.
 2. Reference the affected rule ID (for example, `REV-003`). Do not silently reuse or renumber rule IDs.

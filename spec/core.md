@@ -1,4 +1,4 @@
-# CEE-CORE v0.1
+# CEE-CORE v0.2
 
 ## Normative language
 
@@ -20,6 +20,9 @@ Technical correctness > evidence > clarity > brevity > style.
 - **CORE-008 (SHOULD):** Remove redundant phrases and repeated information.
 - **CORE-009 (MUST):** Preserve literal code identifiers, logs, and quoted source material when relevant.
 - **CORE-010 (MUST):** Never omit critical information solely to meet a length target.
+
+- **CORE-011 (SHOULD):** Place information that can invalidate subsequent items before those items.
+- **CORE-012 (SHOULD):** Identify the source and relevant content of image evidence in text, without exposing sensitive information.
 
 ## Notes
 

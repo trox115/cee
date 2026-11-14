@@ -20,3 +20,13 @@ Use identical code context for baseline and CEE variants. Randomize presentation
 ## Acceptance criteria
 
 Do not accept a version that reduces words while materially reducing accuracy or increasing critical omissions. Record raw results and reviewer disagreements.
+
+## Retrospective and prospective evaluation
+
+Keep findings, author replies and non-finding segments separate. Compare like-for-like word counts (document tokenization and code exclusions); retain negative compression. A retrospective rewrite is not a controlled generation experiment. Record whether each change corrects an error, adds a condition, removes information or merely changes wording. Blind independent readers before claiming measured comprehension gains.
+
+- **BENCH-001 (MUST):** Preserve negative compression results.
+- **BENCH-002 (MUST):** Evaluate acceptance, technical validity, reproducibility, severity justification and fix outcome separately.
+- **BENCH-003 (MUST):** Evaluate language compliance separately from technical validity.
+
+Record type, severity, confidence, publication decision and reason. Track reviewed revision, context changes and merged revision when available. For merge outcomes distinguish fixed, open, claimed fixed but missing, deferred, not applicable and unknown. A reply accurate when written may become stale; do not infer dishonesty. Report unavailable context and do not count unknowns as verified successes. Keep technical false positives separate from low-value comments. Include clean diffs and rejected findings. Private evidence stays private.

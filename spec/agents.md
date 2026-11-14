@@ -1,4 +1,4 @@
-# CEE-AI v0.1
+# CEE-AI v0.2
 
 Applies together with CEE-CORE.
 
