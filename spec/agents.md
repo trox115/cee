@@ -1,4 +1,4 @@
-# CEE-AI v0.2
+# CEE-AI v0.3 release candidate
 
 Applies together with CEE-CORE.
 
@@ -20,3 +20,11 @@ Applies together with CEE-CORE.
 - `UNVERIFIED`: plausible but not confirmed.
 
 These labels are not a substitute for citations, logs, or reproducible conditions.
+
+## Rewriting and inherited errors
+
+Inherited errors remain subject to applicable absolute correctness and evidence obligations. Evaluate that duty separately from whether a rewrite introduced, preserved or corrected the error. Do not excuse an unsupported claim because it appeared in the original.
+
+AI-007 requires an uncertain inference to become categorical in the transformation being assessed. Identical categorical source and candidate text do not establish that conversion. An open policy question is not automatically an uncertain factual inference about separately established code behavior. Preserve both material open questions and their action modality under the applicable rules, without inventing a conversion antecedent.
+
+A claim's truth, the availability of deciding evidence and whether the author performed verification are different questions. Do not infer unobserved conduct from the conclusion. Report unperformed, unavailable and incomplete checks accurately rather than claiming they succeeded.

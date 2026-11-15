@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0-rc.1 — local experimental release candidate
+
+- Clarify materially relevant behavioral and literal preservation; retain existing rule IDs and levels.
+- Separate inherited absolute obligations from transformation-specific antecedents.
+- Distinguish finding applicability, evidence validity, verification conduct and missing-evidence disclosure.
+- Independently justify overlapping violations and distinguish incident detection from rule attribution.
+- Keep smallest-safe-fix and length recommendations conditional; preserve action modality.
+- Clarify reachable defects, uncertain impact and the proposed-removal exception.
+- Index the existing severity-by-impact requirement as REV-015 (MUST).
+- Update review/reply skills and add fresh synthetic examples and proposed validation guidance.
+- Independent human incident validation remains incomplete; no demonstrated quality improvement is claimed.
+- No historical reference, score or benchmark infrastructure change.
+
 ## 0.2.0 — proposed experimental release
 
 - Distinguish review types, impact, confidence and publication decisions.
