@@ -63,7 +63,7 @@ Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE). Contributions a
 
 ## Release-candidate status
 
-`VERSION` is `0.3.0-rc.1`. This is a local experimental release candidate, not a published or validated release. Independent human incident validation remains incomplete. No improvement in technical quality, reading time or evaluator reliability has been demonstrated for this candidate.
+`VERSION` is `0.3.0-rc.1`. This is an experimental release candidate, not a published or validated release. Comparative effectiveness against 0.2.0 has not been validated. Independent human incident validation remains incomplete. No improvement in technical quality, reading time or evaluator reliability has been demonstrated for this candidate.
 
 Existing rule identifiers and normative levels are retained. REV-015 gives an identifier to the existing severity-by-impact obligation; it is not a new severity policy. The current runner discovers it from the specification without an infrastructure change. Its review-discussion profile therefore contains 28 entries instead of 27. Historical evaluations remain bound to their original specification and profile; never rebind them to this working tree or claim their scores validate this candidate.
 

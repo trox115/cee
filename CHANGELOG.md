@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0-rc.1 — local experimental release candidate
+## 0.3.0-rc.1 — experimental release candidate
 
 - Clarify materially relevant behavioral and literal preservation; retain existing rule IDs and levels.
 - Separate inherited absolute obligations from transformation-specific antecedents.
@@ -11,6 +11,7 @@
 - Index the existing severity-by-impact requirement as REV-015 (MUST).
 - Update review/reply skills and add fresh synthetic examples and proposed validation guidance.
 - Independent human incident validation remains incomplete; no demonstrated quality improvement is claimed.
+- Comparative effectiveness against 0.2.0 has not been validated.
 - No historical reference, score or benchmark infrastructure change.
 
 ## 0.2.0 — proposed experimental release
